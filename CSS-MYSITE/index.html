@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prayatharth Srivastav</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="favi/apple-touch-icon.png">
+    <link rel="icon" type="image/png"  href="favi/favicon-32x32.png">
+    <link rel="icon" type="image/png"  href="favi/favicon-16x16.png">
+    <link rel="manifest" href="favi/site.webmanifest">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;1,500&family=Sacramento&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fasthand&family=Montserrat:ital,wght@0,100;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="Top">
+    <img class="topcloud" src="images/cloud.png" alt="cloud ">
+    <h1>I'm Prayatharth</h1>
+    <h2 style="font-style:italic; font-weight: normal;  ">a programmer</h2>
+    <img class="botcloud" src="images/cloud.png" alt="cloud">
+<img class="mountain" src="images/mountain.png" alt="mountain ">
+
+</div>
+
+
+<div class="Middle">
+    <div class="profile">
+      <img class="pro" src="images/DSC_0440.png" alt="profile">
+      <h2>Hello There.</h2>
+      <p>I am Learner | Tech Enthusiast | Exploring various technologies | This site is my  first web dev Learning Project.</p>
+    </div>
+    <hr>
+    <div class="skills">
+      <h2>My Skills.</h2>
+      <div class="skill-row">
+
+        <img class="codeimg" src="images/code.gif" alt="">
+        <h3>Coding & Problem Solving</h3>
+        <p>I really love finding solutions to the problems and implement Coding skills to solve them.</p>
+      </div>
+      <div class="skill-row">
+        <img class="teamimg" src="images/team player.jpg" alt="team">
+        <h3>Team Player</h3>
+
+        <p>I love collaborating with other minds in order to accomplish a task . The Brainstorming is really thrilling</p>
+      </div>
+      
+      <div class="skill-row">
+        <img class="learnimg" src="images/learning.jpg" alt="Learning">
+        <h3>Learning Enthusiast</h3>
+        <p>I enjoy Learning about new skills and am always open to new ideas.</p>
+      </div>
+    </div>
+    
+    <hr>
+    <p>Quote of the Day</p>
+    <div id="quotes" class="q"></div>
+    <div id="author"></div>
+    <button id="newQ" class="btn1">New Quotes</button>
+    <button id="tweetMe" class="btn2 " ><i class="fa-brands icon fa-twitter"></i></button>
+    <br>  
+    <hr>
+    <div class="contact-me">
+      <h2>Get In Touch</h2>
+      <h4>I would love to chat about more opportunities</h4>
+    
+  
+  
+    
+
+  
+  
+      <!-- JAVASCRIPT -->
+      <script>
+  
+          const quotes=document.getElementById("quotes");
+          const author=document.getElementById("author");
+          const newQ=document.getElementById("newQ");
+          const tweetMe=document.getElementById("tweetMe");
+  
+          let quotesData="";
+          let realData="";
+  
+  
+          const tweetNow = () =>{
+              let tweetPost=`https://twitter.com/intent/tweet?text= ${quotesData.text} ${quotesData.author}`;
+              window.open(tweetPost)
+          }
+  
+  
+          const getNewQuotes= () =>{
+              let rnum=Math.floor(Math.random()*10);
+              quotesData = realData[rnum];
+          
+              quotes.innerText =`${quotesData.text}`;
+              author.innerText =`${quotesData.author}`;
+          
+              quotesData.author == null?(author.innerText = "unKnown"):
+              author.innerText =`${quotesData.author}`;
+  
+          };
+  
+  
+          const getQuotes = async () =>{
+              const api= "https://type.fit/api/quotes"
+              try {
+                  let data = await fetch(api);
+                   realData = await data.json();
+                   getNewQuotes();
+              //    console.log(realData);
+              } catch (error) {
+              }
+          };
+          
+          tweetMe.addEventListener('click',tweetNow);
+          newQ.addEventListener('click',getNewQuotes);
+          getQuotes();
+          
+      </script>
+
+
+      <a class="btne" href="mailto:prayatharth@gmail.com">CONTACT ME</a>
+    </div>
+  </div>
+  
+  
+  <div class="Bottom">
+    <a class="footer-link" href="https://www.linkedin.com/">LinkedIn</a>
+    <a class="footer-link" href="https://twitter.com/">Twitter</a>
+    <a class="footer-link" href="https://www.instagram.com/">Instagram</a>
+    <p class="copy">© 2023 Prayatharth Srivastav.</p>
+  </div>
+</body>
+</html>
